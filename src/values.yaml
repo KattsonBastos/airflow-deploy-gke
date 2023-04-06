@@ -358,7 +358,7 @@ data:
   # Otherwise pass connection values in
   metadataConnection:
     user: postgres
-    pass: postgres
+    pass: $Airflow@GKE23#
     protocol: postgresql
     host: ~
     port: 5432
@@ -1706,7 +1706,7 @@ postgresql:
     tag: "11"
   auth:
     enablePostgresUser: true
-    postgresPassword: postgres
+    postgresPassword: $Airflow@GKE23#
     username: ~
     password: ~
 
@@ -1827,7 +1827,7 @@ dags:
     # git repo clone url
     # ssh example: git@github.com:apache/airflow.git
     # https example: https://github.com/apache/airflow.git
-    repo: https://github.com/KattsonBastos/arflow-deploy-gke.git
+    repo: git@github.com:KattsonBastos/arflow-deploy-gke.git
     branch: main
     rev: HEAD
     depth: 1
