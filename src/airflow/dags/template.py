@@ -22,6 +22,7 @@ default_args = {
 @dag(
     start_date=datetime(2023,4,6),
     schedule=None,
+    max_active_runs=1,
     default_args=default_args,
     catchup=False,
     tags=['template']
@@ -31,7 +32,7 @@ def template_dag():
 
     end = DummyOperator(task_id="end")
 
-    init >> print_hello >> end
+    init >> print_hello() >> end
 
 
 dag = template_dag()
