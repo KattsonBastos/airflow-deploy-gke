@@ -4,12 +4,9 @@
 from datetime import datetime, timedelta
 
 ## airflow libraries
-from airflow.decorators import dag
+from airflow.decorators import dag, task
 from airflow.operators.dummy import DummyOperator
 from airflow.operators.python import PythonOperator
-
-def print_hello():
-    print('Hello from GKE!')
 
 
 # declaring dag
@@ -20,10 +17,8 @@ default_args = {
 }
 
 @dag(
-    dag_id="template_dag",
     start_date=datetime(2023,4,6),
-    max_active_runs=1,
-    schedule_interval='0 15 * * 6-7',
+    schedule=None,
     default_args=default_args,
     catchup=False,
     tags=['template']
@@ -31,14 +26,9 @@ default_args = {
 def template_dag():
     init = DummyOperator(task_id="init")
 
-    hello = PythonOperator(
-        task_id='hello_task',
-        python_callable=print_hello
-    )
-
     end = DummyOperator(task_id="end")
 
-    init >> hello >> end
+    init >> end
 
 
 dag = template_dag()
