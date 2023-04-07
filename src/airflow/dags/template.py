@@ -19,7 +19,7 @@ default_args = {
     dag_id="template_dag",
     start_date=datetime(2023,4,1),
     max_active_runs=1,
-    scheduler_interval=timedelta(hours=24),
+    schedule_interval=timedelta(hours=24),
     default_args=default_args,
     catchup=False,
     tags=['template']
