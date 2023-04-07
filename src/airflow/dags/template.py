@@ -21,7 +21,7 @@ default_args = {
 
 @dag(
     dag_id="template_dag",
-    start_date=datetime(2023,4,7),
+    start_date=datetime(2023,4,6),
     max_active_runs=1,
     schedule_interval='0 15 * * 1-5',
     default_args=default_args,
