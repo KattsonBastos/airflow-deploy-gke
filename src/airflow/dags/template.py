@@ -24,8 +24,8 @@ default_args = {
     catchup=false,
     tags=['template']
 )
-def load_data():
+def template_dag():
 	init = DummyOperator(task_id="init")
 
 
-dag = tempalte_dag()
+dag = template_dag()
