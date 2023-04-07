@@ -21,7 +21,7 @@ default_args = {
     max_active_runs=1,
     scheduler_interval=timedelta(hours=24),
     default_args=default_args,
-    catchup=false,
+    catchup=False,
     tags=['template']
 )
 def template_dag():
