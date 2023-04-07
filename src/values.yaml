@@ -358,7 +358,7 @@ data:
   # Otherwise pass connection values in
   metadataConnection:
     user: postgres
-    pass: $Airflow@GKE23#
+    pass: postgres
     protocol: postgresql
     host: ~
     port: 5432
@@ -1002,7 +1002,7 @@ webserver:
   webserverConfigConfigMapName: ~
 
   service:
-    type: ClusterIP
+    type: LoadBalancer
     ## service annotations
     annotations: {}
     ports:
@@ -1706,10 +1706,9 @@ postgresql:
     tag: "11"
   auth:
     enablePostgresUser: true
-    postgresPassword: $Airflow@GKE23#
-    username: ~
-    password: ~
-
+    postgresPassword: postgres
+    username: ""
+    password: ""
 # Config settings to go into the mounted airflow.cfg
 #
 # Please note that these values are passed through the `tpl` function, so are
@@ -1827,7 +1826,7 @@ dags:
     # git repo clone url
     # ssh example: git@github.com:apache/airflow.git
     # https example: https://github.com/apache/airflow.git
-    repo: git@github.com:KattsonBastos/arflow-deploy-gke.git
+    repo: https://github.com/KattsonBastos/arflow-deploy-gke.git
     branch: main
     rev: HEAD
     depth: 1
@@ -1862,7 +1861,7 @@ dags:
     #     # key needs to be gitSshKey
     #     gitSshKey: <base64_encoded_data>
     # and specify the name of the secret below
-    sshKeySecret: airflow-gke
+    sshKeySecret: airflow-gke-git-secret
     #
     # If you are using an ssh private key, you can additionally
     # specify the content of your known_hosts file, example:
@@ -1874,7 +1873,7 @@ dags:
     # interval between git sync attempts in seconds
     # high values are more likely to cause DAGs to become out of sync between different components
     # low values cause more traffic to the remote git repository
-    wait: 5
+    wait: 60
     containerName: git-sync
     uid: 65533
 
