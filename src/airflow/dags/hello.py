@@ -16,8 +16,8 @@ def print_hello():
 dag = DAG(
     dag_id = 'hello_world',
     description='Hello World DAG',
-    schedule_interval=timedelta(hours=24), # the interval in which the dag will be executed
-    start_date=datetime(2023,4,1), # its a timestemp mainly used in the attempt t obackfill
+    schedule_interval=timedelta(seconds=20), # the interval in which the dag will be executed
+    start_date=datetime(2023,4,6), # its a timestemp mainly used in the attempt t obackfill
     catchup=False # interval in which the DAG will try to execute again past paused runs
 )
 
