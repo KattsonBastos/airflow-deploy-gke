@@ -27,5 +27,9 @@ default_args = {
 def template_dag():
 	init = DummyOperator(task_id="init")
 
+    end = DummyOperator(task_id="end")
+
+    init >> end
+
 
 dag = template_dag()
