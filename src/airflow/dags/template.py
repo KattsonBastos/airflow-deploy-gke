@@ -8,6 +8,10 @@ from airflow.decorators import dag
 from airflow.operators.dummy import DummyOperator
 
 
+def print_hello():
+    return '## Heey from our first DAG in GCP!!'
+
+
 # declaring dag
 default_args = {
 	"owner": "Kattson Bastos",
@@ -27,9 +31,14 @@ default_args = {
 def template_dag():
     init = DummyOperator(task_id="init")
 
+    hello = PythonOperator(
+        task_id='hello_task',
+        python_callable=print_hello
+    )
+
     end = DummyOperator(task_id="end")
 
-    init >> end
+    init >> hello >> end
 
 
 dag = template_dag()
