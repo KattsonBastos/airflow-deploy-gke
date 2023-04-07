@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 
 # this function is basically the task
 def print_hello():
-    return 'Heey from our first DAG in GCP!!'
+    print('Hello from GKE!')
 
 # creating the dag. It will be passed later to each task as \
 ## an argument to the 'dag' parameter

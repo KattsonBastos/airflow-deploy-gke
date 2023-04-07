@@ -9,7 +9,7 @@ from airflow.operators.dummy import DummyOperator
 from airflow.operators.python import PythonOperator
 
 def print_hello():
-    return '## Heey from our first DAG in GCP!!'
+    print('Hello from GKE!')
 
 
 # declaring dag
