@@ -25,7 +25,7 @@ default_args = {
     tags=['template']
 )
 def template_dag():
-	init = DummyOperator(task_id="init")
+    init = DummyOperator(task_id="init")
 
     end = DummyOperator(task_id="end")
 
