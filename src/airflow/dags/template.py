@@ -8,6 +8,9 @@ from airflow.decorators import dag, task
 from airflow.operators.dummy import DummyOperator
 from airflow.operators.python import PythonOperator
 
+@task
+def print_hello():
+    print('Hello from GKE!')
 
 # declaring dag
 default_args = {
@@ -28,7 +31,7 @@ def template_dag():
 
     end = DummyOperator(task_id="end")
 
-    init >> end
+    init >> print_hello >> end
 
 
 dag = template_dag()
